@@ -1,0 +1,49 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-5">
+        {{#if isEditing}}
+        <div class="card mt-5 shadow">
+            <div class="card-header text-center" style="background-color: #673d36; color:white">
+                <h3 class="card-title">Edita un Autor {{this.Nombre}}</h3>
+            </div>
+            <div class="card-body">
+                <form action="/autor/update/{{autor.id}}" method="POST" class="form">
+                    <label for="Nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="Nombre" id="Nombre" required value="{{autor.Nombre}}">
+
+                    <label for="Email" class="form-label">Correo Electronico</label>
+                    <input type="email" class="form-control" name="Email" id="Email" required value="{{autor.Email}}">
+
+                    <div class="float-end mt-2">
+                        <a href="/autor/index" class="btn btn-warning">Volver</a>
+                        <button class="btn btn-dark" style="background-color: #673d36;" type="subtmit">Editar</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+        {{else}}
+        <div class="card mt-5 shadow">
+            <div class="card-header text-center" style="background-color: #673d36; color:white">
+                <h3 class="card-title">Crea un Autor</h3>
+            </div>
+            <div class="card-body">
+                <form action="/autor/create/{{autor.id}}" method="POST" class="form">
+                    <label for="Nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="Nombre" id="Nombre" required>
+
+                    <label for="Email" class="form-label">Correo Electronico</label>
+                    <input type="email" class="form-control" name="Email" id="Email" required>
+
+                    <div class="float-end mt-2">
+                        <a href="/autor/index" class="btn btn-warning">Volver</a>
+                        <button class="btn btn-dark" style="background-color: #673d36;" type="subtmit">Crear</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</div>

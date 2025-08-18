@@ -1,0 +1,111 @@
+<div class="row mt-5">
+    <form action="/buscar" method="POST" class="form">
+        <div class="col-12">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <h2 style="color:white;">LIBROS</h2>
+                </div>
+                <div class="col-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control me-1" placeholder="Buscar por titulo" name="Titulo"
+                            aria-label="Buscar Nombre" aria-describedby="button-addon2">
+
+
+                        <div class="dropdown-custom">
+                            <button class="btn btn-warning dropdown-toggle dropdown-toggle-custom" type="button">
+                                Categorias
+                            </button>
+                            <div class="dropdown-menu p-2 custom-dropdown-menu"
+                                style="display: none; position: absolute; z-index: 1000;">
+                                {{#if hasCategorias}}
+                                {{#each categorias}}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="Categoria" value="{{this.id}}"
+                                        id="cat-{{this.id}}">
+                                    <label class="form-check-label" for="cat-{{this.id}}">{{this.Nombre}}</label>
+                                </div>
+                                {{/each}}
+                                {{else}}
+                                <span class="dropdown-item-text">No hay categorias</span>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{{#if hasLibros}}
+<div class="row">
+    {{#each libros}}
+    <div class="col-12 col-sm-4 mb-3">
+        <a href="/libro/details/{{this.id}}" class="btn" style="margin:0;">
+            <div class="card shadow" width="auto" height="auto">
+                <div class="card-home card-body">
+                    <div class="row d-flex">
+                        <div class="col-6 col-sm-6">
+                            <img src="{{this.CoverImg}}" alt="{{this.Titulo}}" width="180px" height="300px">
+                        </div>
+                        <div class="col-6 col-sm-6">
+                            <div class="container">
+                                <p style="color: rgb(0, 0, 0); font-weight:bold;">{{this.Titulo}}</p>
+                                <p style="color: grey;">Lanzamiento - {{this.Anio}}</p>
+                                <p style="color: grey;">Categoría - {{this.Categoria.Nombre}}</p>
+                                <p style="color: grey;">Autor - {{this.Autor.Nombre}}</p>
+                                <p style="color: grey;">Editorial - {{this.Editorial.Nombre}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+</div>
+
+{{/if }}
+
+{{#if hasLibros}}
+<div class="row">
+    {{#each LibrosList}}
+    <div class="col-12 col-sm-4 mb-3">
+        <a href="/libro/details/{{this.id}}" class="btn btn-dark float-end me-2" style="margin:0;">
+            <div class="card shadow" width="auto" height="auto">
+                <div class="card-home card-body">
+                    <div class="row d-flex">
+                        <div class="col-6 col-sm-6">
+                            <img src="{{this.CoverImg}}" alt="{{this.Titulo}}" width="180px" height="300px">
+                        </div>
+                        <div class="col-6 col-sm-6">
+                            <div class="container">
+                                <p style="color: rgb(0, 0, 0); font-weight:bold;">{{this.Titulo}}</p>
+                                <p style="color: grey;">Lanzamiento - {{this.Anio}}</p>
+                                <p style="color: grey;">Categoría - {{this.Categoria.Nombre}}</p>
+                                <p style="color: grey;">Autor - {{this.Autor.Nombre}}</p>
+                                <p style="color: grey;">Editorial - {{this.Editorial.Nombre}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-sm-4">
+            <div class="alert alert-warning" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                No se encontraron libros
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}

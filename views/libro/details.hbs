@@ -1,0 +1,28 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-6 mb-3">
+        <div class="card shadow" width="auto" height="auto">
+            <div class="card-home card-body">
+                <div class="row d-flex">
+                    <div class="col-6 col-sm-6">
+                        <img src="{{libro.CoverImg}}" alt="{{libro.Titulo}}" width="280px" height="400px">
+                    </div>
+                    <div class="col-6 col-sm-6">
+                        <div class="container">
+                            <h5 style="color: rgb(0, 0, 0); font-weight:bold;">{{libro.Titulo}}</h5>
+                            <p style="color: grey; font-size:larger">
+                                <b>Lanzamiento: </b>{{ libro.Anio}} <br>
+                                <b>Categoria: </b>{{ libro.Categoria.Nombre}} <br>
+                                <b>Autor: </b>{{ libro.Autor.Nombre}} <br>
+                                <b>Editorial: </b>{{ libro.Editorial.Nombre}} <br>
+                                <b>Telefono: </b>{{ libro.Editorial.Telefono}} <br>
+                                <b>Pais de la Editorial:</b> {{ libro.Editorial.Pais}} <br>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-volver" href="/">Volver</a>
+    </div>
+</div>

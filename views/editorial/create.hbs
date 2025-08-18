@@ -1,0 +1,56 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-5">
+        {{#if isEditing}}
+        <div class="card mt-5 shadow">
+            <div class="card-header text-center" style="background-color: #673d36; color:white">
+                <h3 class="card-title">Edita una editorial {{this.Nombre}}</h3>
+            </div>
+            <div class="card-body">
+                <form action="/editorial/update/{{editorial.id}}" method="POST" class="form">
+                    <label for="Nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="Nombre" id="Nombre" required
+                        value="{{editorial.Nombre}}">
+
+                    <label for="Telefono" class="form-label">Telefono</label>
+                    <input type="number" class="form-control" name="Telefono" id="Telefono" required
+                        value="{{editorial.Telefono}}">
+
+                    <label for="Pais" class="form-label">Pais</label>
+                    <input type="text" class="form-control" name="Pais" id="Pais" required value="{{editorial.Pais}}">
+
+                    <div class="float-end mt-2">
+                        <a href="/editorial/index" class="btn btn-warning">Volver</a>
+                        <button class="btn btn-dark" style="background-color: #673d36;" type="subtmit">Editar</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+        {{else}}
+        <div class="card mt-5 shadow">
+            <div class="card-header text-center" style="background-color: #673d36; color:white">
+                <h3 class="card-title">Crea una editorial</h3>
+            </div>
+            <div class="card-body">
+                <form action="/editorial/create" method="POST" class="form">
+
+                    <label for="Nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="Nombre" id="Nombre" required>
+
+                    <label for="Telefono" class="form-label">Telefono</label>
+                    <input type="number" class="form-control" name="Telefono" id="Telefono" required>
+
+                    <label for="Pais" class="form-label">Pais</label>
+                    <input type="text" class="form-control" name="Pais" id="Pais" required>
+
+                    <div class="float-end mt-2">
+                        <a href="/editorial/index" class="btn btn-warning">Volver</a>
+                        <button class="btn btn-dark" style="background-color: #673d36;" type="subtmit">Crear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</div>

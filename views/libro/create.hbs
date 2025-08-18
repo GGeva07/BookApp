@@ -1,0 +1,135 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-5">
+        {{#if isEditing}}
+        <div class="card mt-5 shadow">
+            <div class="card-header text-center" style="background-color: #673d36; color:white">
+                <h3 class="card-title">Edita un Libro</h3>
+            </div>
+            <div class="card-body">
+                <form action="/libro/update/{{libros.id}}" enctype="multipart/form-data" method="POST" class="form">
+                    <label for="CoverImg" class="form-label" style="font-weight:bold; margin-top:5px;">Portada</label>
+                    <input type="file" value="{{libros.CoverImg}}" class="form-control" name="CoverImg" id="CoverImg">
+
+                    <label for="Titulo" class="form-label" style="font-weight:bold; margin-top:5px;">Titulo</label>
+                    <input type="text" class="form-control" name="Titulo" id="Titulo" required
+                        value="{{libros.Titulo}}"></input>
+
+                    <label for="Anio" class="form-label" style="font-weight:bold; margin-top:5px;">Año de
+                        Lanzamiento</label>
+                    <input class="form-control" name="Anio" type="number" id="Anio" required value="{{libros.Anio}}">
+                    </input>
+
+                    <label for="idCategoria" class="form-label"
+                        style="font-weight:bold; margin-top:5px;">Categoria</label>
+                    <select name="idCategoria" id="idCategoria" class="form-control" required>
+                        {{#if hasCategorias}}
+                        <option value="{{libros.Categoria.id}}" selected>{{libros.Categoria.Nombre}}</option>
+                        {{#each categorias}}
+                        <option value="{{this.id}}">{{this.Nombre}}</option>
+                        {{/each}}
+                        {{else}}
+                        <option value="" disabled selected>No hay categorias disponibles</option>
+                        {{/if}}
+                    </select>
+
+                    <label for="idAutor" class="form-label" style="font-weight:bold; margin-top:5px;">Autor</label>
+                    <select name="idAutor" id="idAutor" class="form-control" required>
+                        {{#if hasAutores}}
+                        <option value="{{libros.idAutor}}" selected>{{libros.Autor.Nombre}}</option>
+                        {{#each autores}}
+                        <option value="{{this.id}}">{{this.Nombre}}</option>
+                        {{/each}}
+                        {{else}}
+                        <option value="" disabled selected>No hay disponibles</option>
+                        {{/if}}
+                    </select>
+
+                    <label for="idEditorial" class="form-label"
+                        style="font-weight:bold; margin-top:5px;">Editorial</label>
+                    <select name="idEditorial" id="idEditorial" class="form-control" required>
+                        {{#if hasEditoriales}}
+                        <option value="{{libros.Editorial.id}}" selected>{{libros.Editorial.Nombre}}</option>
+                        {{#each editoriales}}
+                        <option value="{{this.id}}">{{this.Nombre}}</option>
+                        {{/each}}
+                        {{else}}
+                        <option value="" disabled selected>No hay editoriales disponibles</option>
+                        {{/if}}
+                    </select>
+                    <div class="float-end mt-2">
+                        <a href="/libro/index" class="btn btn-warning">Volver</a>
+                        <button class="btn btn-dark" style="background-color: #673d36;" type="subtmit">Editar</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+        {{else}}
+        <div class="card mt-1 shadow">
+            <div class="card-header text-center" style="background-color: #673d36; color:white">
+                <h3 class="card-title">Crea un Libro</h3>
+            </div>
+            <div class="card-body">
+                <form action="/libro/create" method="POST" enctype="multipart/form-data" class="form">
+
+                    <label for="CoverImg" class="form-label" style="font-weight:bold; margin-top:5px;">Portada</label>
+                    <input type="file" class="form-control" name="CoverImg" id="CoverImg" required>
+
+                    <label for="Titulo" class="form-label" style="font-weight:bold; margin-top:5px;">Titulo</label>
+                    <input type="text" class="form-control" name="Titulo" id="Titulo" required>
+
+                    <label for="Anio" class="form-label" style="font-weight:bold; margin-top:5px;">Año de
+                        Lanzamiento</label>
+                    <input class="form-control" name="Anio" type="number" id="Anio" required>
+                    </input>
+
+                    <label for="idCategoria" class="form-label"
+                        style="font-weight:bold; margin-top:5px;">Categoria</label>
+                    <select name="idCategoria" id="idCategoria" class="form-control" required>
+                        {{#if hasCategorias}}
+                        <option value="" disabled selected>Selecciona una categoria </option>
+                        {{#each categorias}}
+                        <option value="{{this.id}}">{{this.Nombre}}</option>
+                        {{/each}}
+                        {{else}}
+                        <option value="" disabled selected>No hay categorias disponibles</option>
+                        {{/if}}
+                    </select>
+
+                    <label for="idAutor" class="form-label" style="font-weight:bold; margin-top:5px;">Autor</label>
+                    <select name="idAutor" id="idAutor" class="form-control" required>
+                        {{#if hasAutores}}
+                        <option value="" disabled selected>Selecciona un Autor</option>
+                        {{#each autores}}
+                        <option value="{{this.id}}">{{this.Nombre}}</option>
+                        {{/each}}
+                        {{else}}
+                        <option value="" disabled selected>No hay disponibles</option>
+                        {{/if}}
+                    </select>
+
+                    <label for="idEditorial" class="form-label"
+                        style="font-weight:bold; margin-top:5px;">Editorial</label>
+                    <select name="idEditorial" id="idEditorial" class="form-control" required>
+                        {{#if hasEditoriales}}
+                        <option value="" disabled selected>Selecciona una editorial</option>
+                        {{#each editoriales}}
+                        <option value="{{this.id}}">{{this.Nombre}}</option>
+                        {{/each}}
+                        {{else}}
+                        <option value="" disabled selected>No hay editoriales disponibles</option>
+                        {{/if}}
+                    </select>
+
+
+                    <div class="float-end mt-1">
+                        <a href="/libro/index" class="btn btn-warning">Volver</a>
+                        <button class="btn btn-dark" style="background-color: #673d36;" type="subtmit">Crear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</div>

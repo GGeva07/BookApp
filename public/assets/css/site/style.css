@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/imgs/libreriafoto.jpeg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  backdrop-filter: blur(4px); 
+}
+.contenido {
+  position: relative;
+  z-index: 1;
+  padding: 3rem;
+}
+
+h3 h4 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
+a {
+    text-decoration: none !important;
+    font-weight: bold !important;
+    margin: 20px;
+}
+
+.nav-navbar{
+    display: flex;
+    flex-direction: row;
+}
+
+.bi{
+    font-size: 30px;
+}
+
+
+.btn-volver {
+    color: white;
+    margin: 10px;
+    margin-left: 10px;
+    width: 100px;
+    background-color: #34406a;
+
+}
+
+.btn-volver:hover {
+    color: white;
+    background-color: rgb(220, 136, 46);
+}
+
+.container{
+  display: block;
+  height: 270px;
+}
